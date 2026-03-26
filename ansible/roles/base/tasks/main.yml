@@ -135,7 +135,7 @@
 
       [Timer]
       OnBootSec=5min
-      OnUnitActiveSec=5s
+      OnUnitActiveSec=15s
 
       [Install]
       WantedBy=timers.target
