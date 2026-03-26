@@ -1,0 +1,6 @@
+---
+all:
+  hosts:
+    shitbox:
+      ansible_host: shitbox
+      ansible_user: deploy

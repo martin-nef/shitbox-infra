@@ -1,0 +1,31 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+
+  storage:
+    layout:
+      name: lvm
+      sizing-policy: all
+
+  identity:
+    hostname: shitbox
+    username: deploy
+    # Password is locked — SSH key auth only
+    password: "!"
+
+  ssh:
+    install-server: true
+    authorized-keys:
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICOEEN8odl0R8IOOJTS7yW/sHco4Xb0bU7TY7yCeWaK/"
+    allow-pw: false
+
+  packages:
+    - openssh-server
+    - curl
+
+  late-commands:
+    - echo 'deploy ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/deploy
+    - chmod 440 /target/etc/sudoers.d/deploy

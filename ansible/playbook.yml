@@ -1,0 +1,9 @@
+---
+- name: Provision shitbox
+  hosts: all
+  become: true
+  roles:
+    - role: base
+      tags: [base]
+    - role: apps
+      tags: [apps]

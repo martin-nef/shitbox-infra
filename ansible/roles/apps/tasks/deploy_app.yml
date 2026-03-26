@@ -1,0 +1,32 @@
+---
+- name: Create app directory for {{ item.name }}
+  ansible.builtin.file:
+    path: "/opt/apps/{{ item.name }}"
+    state: directory
+    mode: "0755"
+
+- name: Copy docker-compose.yml for {{ item.name }}
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../apps/{{ item.name }}/docker-compose.yml"
+    dest: "/opt/apps/{{ item.name }}/docker-compose.yml"
+    mode: "0644"
+  register: compose_changed
+
+- name: Template .env for {{ item.name }}
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/../apps/{{ item.name }}/.env.j2"
+    dest: "/opt/apps/{{ item.name }}/.env"
+    mode: "0600"
+  register: env_changed
+
+- name: Deploy {{ item.name }} services
+  community.docker.docker_compose_v2:
+    project_src: "/opt/apps/{{ item.name }}"
+    state: present
+    pull: always
+
+- name: Restart {{ item.name }} if config changed
+  community.docker.docker_compose_v2:
+    project_src: "/opt/apps/{{ item.name }}"
+    state: restarted
+  when: compose_changed.changed or env_changed.changed

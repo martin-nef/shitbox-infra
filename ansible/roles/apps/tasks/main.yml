@@ -1,0 +1,7 @@
+---
+- name: Deploy {{ item.name }}
+  ansible.builtin.include_tasks: deploy_app.yml
+  loop: "{{ apps }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: app_filter is not defined or item.name == app_filter
