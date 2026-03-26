@@ -105,6 +105,48 @@
     enabled: true
     daemon_reload: true
 
+# --- Autopull ---
+
+- name: Install autopull script
+  ansible.builtin.copy:
+    src: autopull.sh
+    dest: /opt/apps/autopull.sh
+    mode: "0755"
+
+- name: Install autopull service unit
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/app-autopull.service
+    mode: "0644"
+    content: |
+      [Unit]
+      Description=Pull and restart Docker Compose apps
+
+      [Service]
+      Type=oneshot
+      ExecStart=/opt/apps/autopull.sh
+
+- name: Install autopull timer
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/app-autopull.timer
+    mode: "0644"
+    content: |
+      [Unit]
+      Description=Poll for Docker image updates
+
+      [Timer]
+      OnBootSec=5min
+      OnUnitActiveSec=5s
+
+      [Install]
+      WantedBy=timers.target
+
+- name: Enable autopull timer
+  ansible.builtin.systemd:
+    name: app-autopull.timer
+    enabled: true
+    state: started
+    daemon_reload: true
+
 # --- Unattended upgrades ---
 
 - name: Install unattended-upgrades
