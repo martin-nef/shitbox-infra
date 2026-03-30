@@ -96,7 +96,7 @@
       Wants=network-online.target
 
       [Service]
-      ExecStart=/usr/local/bin/playit --secret /etc/playit/secret.toml
+      ExecStart=/usr/local/bin/playit --secret_path /etc/playit/secret.toml
       Restart=on-failure
       RestartSec=5
 
