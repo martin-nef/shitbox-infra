@@ -58,6 +58,11 @@
     username: "{{ vault_github_username }}"
     password: "{{ vault_github_token }}"
 
+- name: Create /opt/apps/ directory
+  ansible.builtin.file:
+    path: /opt/apps
+    state: directory
+
 # --- playit.gg ---
 
 - name: Download playit.gg agent
@@ -106,11 +111,6 @@
     daemon_reload: true
 
 # --- Autopull ---
-
-- name: ensures /opt/apps/ dir exists
-  file: 
-    path: /opt/apps/
-    state: directory
 
 - name: Install autopull script
   ansible.builtin.copy:

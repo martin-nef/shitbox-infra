@@ -1,5 +1,5 @@
 ---
-- name: Deploy {{ item.name }}
+- name: Deploy app
   ansible.builtin.include_tasks: deploy_app.yml
   loop: "{{ apps }}"
   loop_control:
