@@ -26,8 +26,9 @@ autoinstall:
   late-commands:
     - echo 'deploy ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/deploy
     - chmod 440 /target/etc/sudoers.d/deploy
+    - curtin in-target --target=/target -- visudo -cf /etc/sudoers.d/deploy
     - mkdir -p /target/home/deploy/.ssh
     - echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICOEEN8odl0R8IOOJTS7yW/sHco4Xb0bU7TY7yCeWaK/" >> /target/home/deploy/.ssh/authorized_keys
     - chmod 700 /target/home/deploy/.ssh
     - chmod 600 /target/home/deploy/.ssh/authorized_keys
-    - chown -R deploy:deploy /target/home/deploy/.ssh
+    - curtin in-target --target=/target -- chown -R deploy:deploy /home/deploy/.ssh
