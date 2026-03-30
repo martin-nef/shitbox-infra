@@ -107,6 +107,11 @@
 
 # --- Autopull ---
 
+- name: ensures /opt/apps/ dir exists
+  file: 
+    path: /opt/apps/
+    state: directory
+
 - name: Install autopull script
   ansible.builtin.copy:
     src: autopull.sh
