@@ -7,4 +7,4 @@ services:
     env_file: .env
     restart: unless-stopped
     volumes:
-      - ./.thruster:/rails/storage/thruster
+      - /tmp/thruster:/rails/storage/thruster
