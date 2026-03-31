@@ -9,7 +9,7 @@
   ansible.builtin.file:
     path: "/opt/apps/{{ item.name }}/.thruster"
     state: directory
-    mode: "0666"
+    mode: "1777"
 
 - name: Copy docker-compose.yml for {{ item.name }}
   ansible.builtin.copy:
