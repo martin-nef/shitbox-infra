@@ -5,6 +5,13 @@
     state: directory
     mode: "0755"
 
+- name: Create thruster storage directory for {{ item.name }}
+  ansible.builtin.file:
+    path: "/opt/apps/{{ item.name }}/.thruster"
+    state: directory
+    owner: "rails"
+    mode: "0600"
+
 - name: Copy docker-compose.yml for {{ item.name }}
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/../apps/{{ item.name }}/docker-compose.yml"
