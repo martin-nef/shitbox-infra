@@ -3,4 +3,3 @@ playit_version: "0.15.26"
 
 apps:
   - name: beam_demo
-    image: ghcr.io/martin-nef/proj_kata:latest

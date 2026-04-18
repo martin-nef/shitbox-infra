@@ -1,7 +1,7 @@
 services:
   web:
     container_name: beam-demo-web
-    image: ${APP_IMAGE}
+    image: ghcr.io/martin-nef/proj_kata:latest
     ports:
       - "127.0.0.1:80:80"
       - "127.0.0.1:443:443"
