@@ -6,6 +6,7 @@ Infrastructure-as-code for a home server (Lenovo ThinkCentre) running containeri
 
 - Ansible 2.15+ with Python 3.10+
 - SSH access to the server as the `deploy` user
+- Make sure the shitbox is available at the hostname `shitbox`. This can be using the hosts file.
 
 ## Quick start
 
