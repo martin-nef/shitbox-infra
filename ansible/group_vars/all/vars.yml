@@ -3,3 +3,4 @@ playit_version: "0.15.26"
 
 apps:
   - name: beam_demo
+  - name: smart-reviewer
