@@ -152,6 +152,13 @@
     state: started
     daemon_reload: true
 
+# --- Install Tailscale ---
+- name: Install Tailscale
+  ansible.builtin.shell: |
+    curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key={{ vault_tailscale_auth_key }}
+  args:
+    creates: /var/lib/tailscale/tailscaled.state
+
 # --- Unattended upgrades ---
 
 - name: Install unattended-upgrades
