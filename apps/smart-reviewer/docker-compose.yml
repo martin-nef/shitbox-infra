@@ -2,7 +2,7 @@ services:
   tunnel:
     image: cloudflare/cloudflared:latest
     restart: unless-stopped
-    command: tunnel run --no-autoupdate
+    command: tunnel --no-autoupdate run
     env_file: .env
   fe:
     image: ghcr.io/martin-nef/smart-reviewer:latest-fe
