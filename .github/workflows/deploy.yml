@@ -31,7 +31,6 @@ jobs:
         run: echo -n "${{ secrets.VAULT_PASSWORD }}" > ansible/.vault_password
 
       - name: Verify ansible config
-        working-directory: ansible
         run: make verify
 
       - name: Connect to Tailscale
