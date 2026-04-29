@@ -45,7 +45,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          echo "${{ secrets.SHITBOX_PEM }}" > ~/.ssh/shitbox.pem
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/shitbox.pem
           chmod 600 ~/.ssh/shitbox.pem
           echo "$SSH_CONFIG" > ~/.ssh/config
           chmod 600 ~/.ssh/config
