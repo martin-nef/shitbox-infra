@@ -28,7 +28,9 @@ jobs:
           sudo apt-get install -y ansible
 
       - name: Write vault password
-        run: echo -n "${{ secrets.VAULT_PASSWORD }}" > ansible/.vault_password
+        run: |
+          echo -n "${{ secrets.VAULT_PASSWORD }}" > ansible/.vault_password
+          wc -c ansible/.vault_password
 
       - name: Verify ansible config
         run: make verify
