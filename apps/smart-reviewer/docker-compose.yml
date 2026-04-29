@@ -1,4 +1,3 @@
-version: '3'
 services:
   tunnel:
     image: cloudflare/cloudflared:latest
@@ -8,7 +7,7 @@ services:
   fe:
     image: ghcr.io/martin-nef/smart-reviewer:latest-fe
     environment:
-      API_URL: "http://be:80"
+      API_URL: "http://be:3000"
     restart: unless-stopped
   be:
     image: ghcr.io/martin-nef/smart-reviewer:latest-be
