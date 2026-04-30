@@ -1,6 +1,6 @@
 # shitbox-infra
 
-Infrastructure-as-code for a home server (Lenovo ThinkCentre) running containerised apps via Docker Compose, with [playit.gg](https://playit.gg) tunnels for public access.
+Infrastructure-as-code for a home server (Lenovo ThinkCentre) running containerised apps via Docker Compose, with [playit.gg](https://playit.gg) tunnel as an option for public access.
 
 ## Prerequisites
 
