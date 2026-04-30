@@ -7,7 +7,7 @@ services:
   fe:
     image: ghcr.io/martin-nef/smart-reviewer:latest-fe
     environment:
-      API_URL: "http://be:3000"
+      API_URL: "https://smart-reviewer-api.nefcloud.top"
     restart: unless-stopped
   be:
     image: ghcr.io/martin-nef/smart-reviewer:latest-be
