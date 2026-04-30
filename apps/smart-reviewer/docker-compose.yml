@@ -13,3 +13,12 @@ services:
     image: ghcr.io/martin-nef/smart-reviewer:latest-be
     env_file: .env
     restart: unless-stopped
+    environment:
+      MONGO_URI: "mongodb://mongo:27017/smart_reviewer"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - ./tmp/mongo:/data/db
